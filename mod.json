@@ -1,0 +1,16 @@
+{
+	"namespace": "LobbyJukebox",
+	"displayName": "LobbyJukebox",
+	"version": "1.0.0",
+	"synchronyVersion": "4.0.0",
+	"description": "Spawns a jukebox in the lobby to play the game's soundtracks.",
+	"author": "Nixill",
+	"dependencies": {},
+	"api": {
+		"scriptPath": "scripts"
+	},
+	"icon": "LobbyJukeboxIcon.png",
+	"banner": "LobbyJukeboxBanner.png",
+	"tags": [],
+	"name": "LobbyJukebox"
+}
