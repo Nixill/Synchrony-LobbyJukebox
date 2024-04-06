@@ -2,7 +2,10 @@ local Boss          = require "necro.game.level.Boss"
 local GameMod       = require "necro.game.data.resource.GameMod"
 local LevelSequence = require "necro.game.level.LevelSequence"
 local RNG           = require "necro.game.system.RNG"
+local Soundtrack    = require "necro.game.data.Soundtrack"
 local Utilities     = require "system.utils.Utilities"
+
+local ArtistMenu = require "LobbyJukebox.menu.ArtistMenu"
 
 Queue = {}
 Pile = {}
@@ -90,10 +93,21 @@ function mod.getNextTrack()
     ::retry::
   end
 
-  -- for testing we'll stop here
-  return nextTrack
+  -- Zone 3: Pick hot or cold
+  if nextTrack.type == "zone" and nextTrack.zone == LevelSequence.Zone.ZONE_3 then
+    nextTrack.variant = RNG.choice({ "h", "c" }, RNG.Channel.SOUNDTRACK)
+  end
 
   -- Pick an artist
+  nextTrack.artist = ArtistMenu.pickArtist()
+
+  -- Pick a shopkeeper (but only for zone musics)
+  if nextTrack.type == "zone" then
+    nextTrack.vocals = Soundtrack.Vocals.SHOPKEEPER
+  end
+
+  print("Now playing: " .. Utilities.inspect(nextTrack))
+  return nextTrack
 end
 
 return mod
