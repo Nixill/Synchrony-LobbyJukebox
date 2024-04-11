@@ -64,11 +64,11 @@ function mod.pickArtist()
 
   for i, v in ipairs(artists) do
     if Soundtrack.Artist[v] and Soundtrack.isArtistAvailable(Soundtrack.Artist[v]) then
-      return Soundtrack.Artist[v]
+      return Soundtrack.Artist[v], v
     end
   end
 
-  return Soundtrack.Artist.DANNY_B -- fallback
+  return Soundtrack.Artist.DANNY_B, "DANNY_B" -- fallback
 end
 
 return mod

@@ -1,7 +1,9 @@
+-- local Boss = require "necro.game.level.Boss"
 -- local Soundtrack = require "necro.game.data.Soundtrack"
-local Music = require "necro.audio.Music"
--- local Boss          = require "necro.game.level.Boss"
+-- local Music = require "necro.audio.Music"
 -- local LevelSequence = require "necro.game.level.LevelSequence"
+-- local Menu = require "necro.menu.Menu"
+-- Menu.open("LobbyJukebox_nowPlaying")
 
 -- local MusicControl = require "LobbyJukebox.MusicControl"
 
@@ -13,16 +15,14 @@ local Music = require "necro.audio.Music"
 --   print(Music.getLayerData(i))
 -- end
 
--- for k, v in pairs(LevelSequence.Zone) do
---   print(k, v)
--- end
-
--- for k, v in pairs(Boss.Type) do
---   print(k, v)
--- end
-
 -- MusicControl.clearQueue()
 
 -- print(Soundtrack.Artist)
 -- print(Soundtrack.isArtistAvailable(Soundtrack.Artist.GROOVE_COASTER))
 -- print(Soundtrack.LayerType)
+-- print(Soundtrack.Vocals)
+
+-- print(Boss.Type)
+-- print(LevelSequence.Zone)
+
+-- print(Music.getParameters())

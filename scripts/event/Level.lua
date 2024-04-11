@@ -1,12 +1,12 @@
 local CurrentLevel = require "necro.game.level.CurrentLevel"
 local Event        = require "necro.event.Event"
 
-local MusicControl = require "LobbyJukebox.MusicControl"
-local TickFunction = require "LobbyJukebox.DelayFunction"
+local MusicControl  = require "LobbyJukebox.MusicControl"
+local DelayFunction = require "LobbyJukebox.DelayFunction"
 
 Event.levelLoad.add("queueDifferentTrack", { order = "music", sequence = -1 }, function(ev)
-  TickFunction.cancelPlayNext()
-  TickFunction.cancelFadeOut()
+  DelayFunction.cancelPlayNext()
+  DelayFunction.cancelFadeOut()
 
   if not CurrentLevel.isLobby() then return end
 
