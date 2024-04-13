@@ -3,6 +3,7 @@ local GameMod       = require "necro.game.data.resource.GameMod"
 local LevelSequence = require "necro.game.level.LevelSequence"
 local Music         = require "necro.audio.Music"
 local RNG           = require "necro.game.system.RNG"
+local Settings      = require "necro.config.Settings"
 local Soundtrack    = require "necro.game.data.Soundtrack"
 local Utilities     = require "system.utils.Utilities"
 
@@ -14,8 +15,27 @@ Queue = {}
 -- That's exactly what we want, so that the sequence is always up to date.
 local sequence = nil
 
--- Temp
-local Shuffle = true
+Shuffle = Settings.user.bool {
+  name = "Shuffle tracks",
+  desc = "Whether or not LobbyMusic should play tracks in a shuffled order",
+  id = "shuffle",
+  order = 1,
+  default = true
+}
+
+LastPlay = Settings.user.table {
+  name = "Last played song",
+  id = "lastPlay",
+  visibility = Settings.Visibility.RESTRICTED,
+  default = { type = "lobby" }
+}
+
+BlockedSongs = Settings.user.table {
+  name = "Blocked songs",
+  id = "blockedSongs",
+  default = {},
+  visibility = Settings.Visibility.HIDDEN
+}
 
 local mod = {}
 
@@ -28,6 +48,54 @@ local function isInQueue(item)
     if Utilities.deepEquals(item, v) then return true end
   end
   return false
+end
+
+local function generateStringKey(params, suffix)
+  local out
+
+  if params.type == "boss" then
+    out = "boss " .. params.bossKey
+  elseif params.type == "zone" then
+    out = "zone " .. params.zoneKey .. " " .. params.floor
+  else
+    out = params.type
+  end
+
+  if params.variant then
+    out = out .. " " .. params.variant
+  end
+
+  if suffix then
+    return out .. " " .. suffix
+  else
+    return out
+  end
+end
+
+function mod.isSongBlocked(params)
+  if type(params) == "table" then
+    params = generateStringKey(params)
+  end
+
+  return BlockedSongs[params]
+end
+
+function mod.setSongBlocked(params, value)
+  if type(params) == "table" then
+    params = generateStringKey(params)
+  end
+
+  if value == nil then
+    value = not mod.isSongBlocked(params)
+  end
+
+  -- To declutter, we'll remove items from the list instead of setting
+  -- them to false.
+  if value == false then
+    value = nil
+  end
+
+  BlockedSongs[params] = value
 end
 
 function mod.clearQueue()
@@ -62,6 +130,10 @@ function mod.getSequence()
 
     for v, k in ipairs(Boss.Type.names) do
       local modName = ""
+      if k == "NECRODANCER" then
+        goto skipBoss
+      end
+
       if v > Boss.Type.builtInMax then
         modName = getModName(k)
       end
@@ -77,6 +149,8 @@ function mod.getSequence()
       end
 
       musicMods[modName] = true
+
+      ::skipBoss::
     end
 
     for i, v in ipairs(Utilities.sort(Utilities.getKeyList(musicMods))) do
@@ -123,7 +197,6 @@ local function enqueueTracks()
   while #Queue < #pile do
     local song = table.remove(pile, RNG.int(#pile, RNG.Channel.SOUNDTRACK) + 1)
     table.insert(Queue, song)
-    print("Added to queue: " .. Utilities.inspect(song))
   end
 end
 
@@ -131,6 +204,10 @@ end
 local function getCurrentPosition()
   local seq = mod.getSequence()
   local thisTrack = Music.getParameters()
+
+  if thisTrack.LobbyJukebox_ignore then
+    thisTrack = LastPlay
+  end
 
   if thisTrack == nil then
     return 0
@@ -173,7 +250,6 @@ function mod.getNextTrackShuffled()
   local nextTrack = nil
   while not nextTrack do
     nextTrack = table.remove(Queue, 1)
-    print("Removed from queue: " .. Utilities.inspect(nextTrack))
 
     if not nextTrack then
       nextTrack = { type = "lobby" } -- fallback
@@ -189,9 +265,12 @@ function mod.getNextTrackShuffled()
       if not nextTrack.boss then nextTrack = nil end
     end
 
-    ::retry::
+    if mod.isSongBlocked(nextTrack) then
+      nextTrack = nil
+    end
   end
 
+  LastPlay = nextTrack
   return nextTrack
 end
 
@@ -200,20 +279,35 @@ function mod.getNextTrackSequential()
 
   -- Find the current position
   local pos = getCurrentPosition()
+  local sPos = pos
   local nextTrack
 
-  if pos == #seq then
-    nextTrack = seq[1]
-  else
-    nextTrack = seq[pos + 1]
+  while nextTrack == nil do
+    if pos >= #seq then
+      pos = 1
+    else
+      pos = pos + 1
+    end
+
+    nextTrack = seq[pos]
+
+    if nextTrack.type == "zone" then
+      nextTrack.zone = LevelSequence.Zone[nextTrack.zoneKey]
+    elseif nextTrack.type == "boss" then
+      nextTrack.boss = Boss.Type[nextTrack.bossKey]
+    end
+
+    if mod.isSongBlocked(nextTrack) then
+      nextTrack = nil
+
+      if pos == sPos then
+        nextTrack = { type = "lobby" } -- fallback
+        break
+      end
+    end
   end
 
-  if nextTrack.type == "zone" then
-    nextTrack.zone = LevelSequence.Zone[nextTrack.zoneKey]
-  elseif nextTrack.type == "boss" then
-    nextTrack.boss = Boss.Type[nextTrack.bossKey]
-  end
-
+  LastPlay = nextTrack
   return nextTrack
 end
 
@@ -226,23 +320,63 @@ function mod.getNextTrack()
     nextTrack = mod.getNextTrackSequential()
   end
 
+  return mod.getSpecificTrack(nextTrack)
+end
+
+function mod.getSpecificTrack(nextTrack)
+  -- Make the zone or boss use the right keys
+  if nextTrack.type == "zone" then
+    nextTrack.zone = LevelSequence.Zone[nextTrack.zoneKey]
+    if not nextTrack.zone then return nil end
+  elseif nextTrack.type == "boss" then
+    nextTrack.boss = Boss.Type[nextTrack.bossKey]
+    if not nextTrack.boss then return nil end
+  end
+
   -- Zone 3: Pick hot or cold
   if nextTrack.type == "zone" and nextTrack.zone == LevelSequence.Zone.ZONE_3 then
     nextTrack.variant = RNG.choice({ "h", "c" }, RNG.Channel.SOUNDTRACK)
   end
 
   -- Pick an artist
-  nextTrack.artist, nextTrack.artistKey = ArtistMenu.pickArtist()
-
-  -- Pick a shopkeeper (but only for zone musics)
-  if nextTrack.type == "zone" then
-    nextTrack.vocals, nextTrack.vocalsKey = ShopkeeperMenu.pickShopkeeper()
+  if not nextTrack.artist then
+    if nextTrack.artistKey then
+      nextTrack.artist = Soundtrack.Artist[nextTrack.artistKey or "DANNY_B"]
+    else
+      nextTrack.artist, nextTrack.artistKey = ArtistMenu.pickArtist()
+    end
   end
 
-  nextTrack.playedAt = math.max(Music.getMusicTime(), 0)
+  -- Pick a shopkeeper (but only for zone musics)
+  -- (and only if the artist and the mod support it)
+  if nextTrack.type == "zone" then
+    if not nextTrack.vocals
+      and (Soundtrack.Artist.data[nextTrack.artist].shopkeeper ~= false)
+      and ({ [""] = true })[nextTrack.mod]
+    then
+      if nextTrack.vocalsKey then
+        nextTrack.vocals = Soundtrack.Vocals[nextTrack.vocalsKey or "NONE"]
+      else
+        nextTrack.vocals, nextTrack.vocalsKey = ShopkeeperMenu.pickShopkeeper()
+      end
+    end
+  end
 
-  print("Now playing: " .. Utilities.inspect(nextTrack))
+  LastPlay = nextTrack
+  -- print("Now playing: " .. Utilities.inspect(nextTrack))
   return nextTrack
+end
+
+function mod.isShuffled()
+  return Shuffle
+end
+
+function mod.setShuffled(val)
+  if val == nil then
+    val = not Shuffle
+  end
+
+  Shuffle = val
 end
 
 return mod

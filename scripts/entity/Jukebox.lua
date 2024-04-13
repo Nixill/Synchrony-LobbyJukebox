@@ -1,5 +1,6 @@
 local Collision      = require "necro.game.tile.Collision"
 local Components     = require "necro.game.data.Components"
+local CurrentLevel   = require "necro.game.level.CurrentLevel"
 local CustomEntities = require "necro.game.data.CustomEntities"
 local Event          = require "necro.event.Event"
 local Menu           = require "necro.menu.Menu"
@@ -60,7 +61,9 @@ CustomEntities.register {
 }
 
 Event.levelLoad.add("spawnJukebox", { order = "lobbyLevel", sequence = 1 }, function(ev)
-  Object.spawn("LobbyJukebox_Jukebox", -5, -1)
+  if CurrentLevel.isLobby() then
+    Object.spawn("LobbyJukebox_Jukebox", -5, -1)
+  end
 end)
 
 Event.objectInteract.add("openJukeboxMenu", {
@@ -69,4 +72,5 @@ Event.objectInteract.add("openJukeboxMenu", {
   filter = "LobbyJukebox_interactableOpenJukebox"
 }, function(ev)
   Menu.open("LobbyJukebox_nowPlaying")
+  Menu.selectByID("nowPlaying.playPause")
 end)

@@ -5,7 +5,7 @@
 -- local Menu = require "necro.menu.Menu"
 -- Menu.open("LobbyJukebox_nowPlaying")
 
--- local MusicControl = require "LobbyJukebox.MusicControl"
+-- local MusicControl = require "LobbyJukebox.mod.MusicControl"
 
 -- for i = 1, Music.getLayerCount() do
 --   Music.setLayerVolume(i, 1)
@@ -26,3 +26,5 @@
 -- print(LevelSequence.Zone)
 
 -- print(Music.getParameters())
+
+-- print(Soundtrack.Variant)

@@ -3,14 +3,18 @@
 	"displayName": "LobbyJukebox",
 	"version": "1.0.0",
 	"synchronyVersion": "4.0.0",
-	"description": "Spawns a jukebox in the lobby to play the game's soundtracks.",
+	"description": "Spawns a jukebox in the lobby to play the game's soundtracks.\n(Jukebox art by WinnerBit!)",
 	"author": "Nixill",
 	"dependencies": {},
-	"api": {
-		"scriptPath": "scripts"
-	},
+	"api": {"scriptPath":"scripts"},
 	"icon": "LobbyJukeboxIcon.png",
 	"banner": "LobbyJukeboxBanner.png",
 	"tags": [],
-	"name": "LobbyJukebox"
+	"name": "LobbyJukebox_io_3915137",
+	"changelog": "",
+	"homepageURL": "https://mod.io/g/crypt/m/lobbyjukebox",
+	"modioID": "3915137",
+	"modioUserID": 12939888,
+	"pendingVersion": "1.0.0",
+	"visibility": 0
 }

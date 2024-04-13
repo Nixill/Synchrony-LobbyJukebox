@@ -31,9 +31,14 @@ return {
       ["zone ZONE_5 3"] = "Six Feet Thunder",
       ["boss KING_CONGA"] = "Konga Conga Kappa",
       ["boss DEATH_METAL"] = "Metalmancy",
+      ["boss DEATH_METAL "] = "Metalmancy",
+      ["boss DEATH_METAL a"] = "Metalmancy",
       ["boss DEEP_BLUES"] = "Knight to C-Sharp",
       ["boss CORAL_RIFF"] = "Deep Sea Bass",
       ["boss FORTISSIMOLE"] = "Notorious D.I.G.",
+      ["boss FORTISSIMOLE "] = "Notorious D.I.G.",
+      ["boss FORTISSIMOLE a"] = "Notorious D.I.G.",
+      ["boss FORTISSIMOLE b"] = "Notorious D.I.G.",
       ["boss DEAD_RINGER"] = "For Whom the Knell Tolls",
       ["boss NECRODANCER"] = "Momentum Mori",
       ["boss NECRODANCER_2"] = "Momentum Mori (Melody ver.)",
@@ -68,6 +73,8 @@ return {
       ["zone ZONE_5 3"] = "Trial of Thunder",
       ["boss KING_CONGA"] = "Stronger Konga",
       ["boss DEATH_METAL"] = "Pyrodancer",
+      ["boss DEATH_METAL "] = "Pyrodancer",
+      ["boss DEATH_METAL a"] = "Pyrodancer (Pokla ver.)",
       ["boss DEEP_BLUES"] = "Knight Fall",
       ["boss CORAL_RIFF"] = "Deep Fear Octobass",
       ["boss FORTISSIMOLE"] = "Molevolence"
@@ -197,13 +204,15 @@ return {
       ["boss DEATH_METAL"] = "Sferro",
       ["boss DEEP_BLUES"] = "Johnatron",
       ["boss CORAL_RIFF"] = "Tommy '86",
-      ["boss FORTISSIMOLE"] = "Johnatron",
+      ["boss FORTISSIMOLE"] = "Unknown",
+      ["boss FORTISSIMOLE "] = "Johnatron",
       ["boss FORTISSIMOLE a"] = "Sferro",
       ["boss FORTISSIMOLE b"] = "Tommy '86"
     },
     OC_REMIX = {
       _prefix = "OC ReMix - ",
       ["lobby"] = "Flexstyle",
+      ["training"] = "Ben Briggs",
       ["zone ZONE_1 1"] = "DDRKirby(ISQ)",
       ["zone ZONE_1 2"] = "RoboRob",
       ["zone ZONE_1 3"] = "Chimpazilla",
@@ -270,12 +279,21 @@ return {
       ["zone ZONE_4 2"] = "beat_shobon",
       ["zone ZONE_4 3"] = "Ocelot",
       ["zone ZONE_5 1"] = "gaburyu & nyankobrq",
-      ["zone ZONE_5 2"] = "Vaultt Kid & FlangerMoose",
+      ["zone ZONE_5 2"] = "Vault Kid & FlangerMoose",
     }
   },
   vocals = {
     _tracks = {
       ["boss FORTISSIMOLE"] = {
+        _default = "Mega Ran"
+      },
+      ["boss FORTISSIMOLE "] = {
+        _default = "Mega Ran"
+      },
+      ["boss FORTISSIMOLE a"] = {
+        _default = "Mega Ran"
+      },
+      ["boss FORTISSIMOLE b"] = {
         _default = "Mega Ran"
       }
     }

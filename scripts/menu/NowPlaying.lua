@@ -1,11 +1,19 @@
+local Color           = require "system.utils.Color"
 local Event           = require "necro.event.Event"
 local Menu            = require "necro.menu.Menu"
 local Music           = require "necro.audio.Music"
 local Settings        = require "necro.config.Settings"
 local SliderMenu      = require "necro.menu.generic.SliderMenu"
 local StringUtilities = require "system.utils.StringUtilities"
+local Theme           = require "necro.config.Theme"
 
-local SongInfo = require "LobbyJukebox.info.SongInfo"
+local SongInfo     = require "LobbyJukebox.info.SongInfo"
+local MusicControl = require "LobbyJukebox.mod.MusicControl"
+local MusicTimer   = require "LobbyJukebox.mod.MusicTimer"
+
+local function getIcon(which)
+  return "/mods/LobbyJukebox/gfx/controls/" .. which .. ".png"
+end
 
 local function getTime(v, m)
   m = m or v
@@ -30,6 +38,9 @@ local function getTime(v, m)
       .. ":" .. StringUtilities.leftPad(secs, 2, "0")
   end
 end
+
+local selectPrev = function() Menu.changeSelection(-1, true) end
+local selectNext = function() Menu.changeSelection(1, true) end
 
 Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
   Menu.suppressKeyControlForTick()
@@ -87,9 +98,8 @@ Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
     {
       id = "nowPlaying.time",
       label = function()
-        local t = Music.getMusicTime()
-        local progress = t - info.startedAt
-        return getTime(progress, info.length) .. "/" .. getTime(info.length)
+        return getTime(MusicTimer.getTrackTime(), MusicTimer.getTrackLength()) ..
+          "/" .. getTime(MusicTimer.getTrackLength())
       end,
       action = function() end,
       selectableIf = false,
@@ -97,21 +107,212 @@ Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
       alignX = 0,
       maxWidth = 680
     },
-    { height = 0 },
+    {
+      id = "nowPlaying.restart",
+      action = MusicTimer.restart,
+      icon = {
+        image = getIcon("restart"),
+        selectionTint = Theme.Color.HIGHLIGHT
+      },
+      x = -175,
+      y = 200,
+      alignX = 0,
+      width = 48,
+      height = 48,
+      boundingBox = {
+        -175 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
+    -- { -- This is disabled because I've frozen the game THREE TIMES by clicking it.
+    --   id = "nowPlaying.rewind",
+    --   icon = {
+    --     image = getIcon("backward"),
+    --     selectionTint = Theme.Color.HIGHLIGHT
+    --   },
+    --   action = MusicTimer.seekBackward,
+    --   x = -150,
+    --   y = 200,
+    --   alignX = 0,
+    --   width = 48,
+    --   height = 48,
+    --   boundingBox = {
+    --     -150 - 24,
+    --     200 - 24,
+    --     48,
+    --     48
+    --   },
+    --   leftAction = selectPrev,
+    --   rightAction = selectNext,
+    --   upAction = function() end,
+    --   downAction = function() end
+    -- },
+    {
+      id = "nowPlaying.playPause",
+      icon = function()
+        local icn = {
+          selectionTint = Theme.Color.HIGHLIGHT
+        }
+        icn.image = getIcon(MusicTimer.isPaused() and "play" or "pause")
+        return icn
+      end,
+      action = MusicTimer.togglePause,
+      x = -125,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        -125 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
+    {
+      id = "nowPlaying.forward",
+      icon = {
+        image = getIcon("forward"),
+        selectionTint = Theme.Color.HIGHLIGHT
+      },
+      action = MusicTimer.seekForward,
+      x = -75,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        -75 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
     {
       id = "nowPlaying.skip",
-      label = "Skip",
-      action = function() end
+      icon = {
+        image = getIcon("next"),
+        selectionTint = Theme.Color.HIGHLIGHT
+      },
+      action = MusicTimer.play,
+      x = -25,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        -25 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
+    {
+      id = "nowPlaying.shuffle",
+      icon = function()
+        return {
+          image = getIcon(MusicControl.isShuffled() and "shuffle" or "shuffle_off"),
+          selectionTint = Theme.Color.HIGHLIGHT,
+        }
+      end,
+      action = MusicControl.setShuffled,
+      x = 25,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        25 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
+    {
+      id = "nowPlaying.loop",
+      icon = function()
+        return {
+          image = getIcon(MusicTimer.isLooped() and "loop" or "loop_off"),
+          selectionTint = Theme.Color.HIGHLIGHT
+        }
+      end,
+      action = MusicTimer.setLooped,
+      x = 75,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        75 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
+    },
+    {
+      id = "nowPlaying.playlist",
+      icon = {
+        image = getIcon("playlist"),
+        selectionTint = Theme.Color.HIGHLIGHT
+      },
+      x = 125,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        125 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      action = function() Menu.open("LobbyJukebox_playlist") end,
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
     },
     {
       id = "nowPlaying.settings",
-      label = "Settings",
-      action = function() end
-    },
-    {
-      id = "nowPlaying.back",
-      label = "Back",
-      action = function() Menu.close() end
+      icon = {
+        image = getIcon("settings"),
+        selectionTint = Theme.Color.HIGHLIGHT
+      },
+      x = 175,
+      y = 200,
+      alignX = 0,
+      boundingBox = {
+        175 - 24,
+        200 - 24,
+        48,
+        48
+      },
+      action = function()
+        Menu.open("settings", {
+          layer = Settings.Layer.USER,
+          prefix = "mod.LobbyJukebox",
+          showSliders = true,
+          LobbyJukebox_noFilter = true
+        })
+      end,
+      leftAction = selectPrev,
+      rightAction = selectNext,
+      upAction = function() end,
+      downAction = function() end
     }
   }
 

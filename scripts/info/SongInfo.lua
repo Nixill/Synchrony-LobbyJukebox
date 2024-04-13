@@ -9,8 +9,56 @@ local Info = require "LobbyJukebox.info.SongTitleTable"
 
 local mod = {}
 
-function mod.getSongInfo()
-  local params = Music.getParameters()
+function mod.getTitleInfo(params)
+  params = params or Music.getParameters()
+
+  -- Construct the track key and also make basic title/artist text available
+  local track = params.type
+  if track == "zone" then
+    local zone = params.zoneKey or LevelSequence.Zone.names[params.zone]
+    local floor = params.floor
+
+    track = "zone " .. zone .. " " .. floor
+
+    local zoneName = LevelSequence.Zone.prettyNames[LevelSequence.Zone[zone] or ""] or zone
+
+    local variantSuffix = ""
+
+    if params.zoneKey == "ZONE_3" then
+      if params.variant == "h" then
+        variantSuffix = " Hot"
+      elseif params.variant == "c" then
+        variantSuffix = " Cold"
+      end
+    end
+
+    return zoneName .. " Floor " .. floor .. variantSuffix
+  elseif track == "boss" then
+    local boss = params.bossKey or Boss.Type.names[params.boss]
+
+    track = "boss " .. boss
+
+    local bossData = (Boss.Type.data[Boss.Type[boss] or ""] or {})
+    local bossName
+
+    if bossData.splashTitle then
+      bossName = bossData.splashTitle
+    elseif bossData.entity then
+      local ent = Entities.getEntityPrototype(bossData.entity)
+      if ent.friendlyName then
+        bossName = ent.friendlyName.name
+      end
+    end
+
+    bossName = bossName or boss
+    return bossName
+  else
+    return StringUtilities.titleCase(track)
+  end
+end
+
+function mod.getSongInfo(params)
+  params = params or Music.getParameters()
   local titleInfoText = ""
   local titleText
   local artistText
@@ -24,8 +72,18 @@ function mod.getSongInfo()
 
     track = "zone " .. zone .. " " .. floor
 
+    local variantSuffix = ""
+
+    if params.zoneKey == "ZONE_3" then
+      if params.variant == "h" then
+        variantSuffix = " Hot"
+      elseif params.variant == "c" then
+        variantSuffix = " Cold"
+      end
+    end
+
     local zoneName = LevelSequence.Zone.prettyNames[LevelSequence.Zone[zone] or ""] or zone
-    titleInfoText = zoneName .. " Floor " .. floor
+    titleInfoText = zoneName .. " Floor " .. floor .. variantSuffix
   elseif track == "boss" then
     local boss = params.bossKey or Boss.Type.names[params.boss]
 
@@ -74,7 +132,7 @@ function mod.getSongInfo()
     -- Mod tracks should default to unknown artist (which won't display)
   elseif Info.artists[artist] then
     artistText = (Info.artists[artist]._prefix or "") ..
-      Info.artists[artist]._default .. (Info.artists[artist]._suffix or "")
+      (Info.artists[artist]._default or "") .. (Info.artists[artist]._suffix or "")
   else
     artistText = artist
   end
@@ -88,28 +146,12 @@ function mod.getSongInfo()
     vocalsText = (Soundtrack.Vocals.data[Soundtrack.Vocals[shopkeeper] or -1] or {}).name or shopkeeper
   end
 
-  -- Compute start time
-  local playedAt = params.playedAt or 0
-  local length = Music.getMusicLength()
-  local startTime
-  if playedAt == 0 then
-    startTime = 0
-  else
-    startTime = playedAt + length - (playedAt % length)
-  end
-
-  if Music.isMusicLooping() then
-    length = length + 5
-  end
-
   return {
     title = titleText,
     titleInfo = titleInfoText,
     artist = artistText,
     vocals = vocalsText,
-    songType = params.type,
-    startedAt = startTime,
-    length = length
+    songType = params.type
   }
 end
 
