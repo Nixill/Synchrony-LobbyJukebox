@@ -49,7 +49,19 @@ return {
       ["zone MageZone_MAGE_ZONE 2"] = "Occult Classic",
       ["zone MageZone_MAGE_ZONE 3"] = "Chaos in the Court",
       ["boss MageZone_SYMPHONY_OF_SORCERY"] = "Concerto Corporis",
-      ["boss MageZone_SYMHPONY_OF_SORCERY"] = "Concerto Corporis" -- typo'd key in source mod
+      ["boss MageZone_SYMHPONY_OF_SORCERY"] = "Concerto Corporis", -- typo'd key in source mod
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch"
+    },
+    A_RIVAL = {
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Melody Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Melody Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Melody Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Melody Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Melody Mix)"
     },
     FAMILYJULES7X = {
       ["lobby"] = "Breath Before the Chaos",
@@ -77,7 +89,40 @@ return {
       ["boss DEATH_METAL a"] = "Pyrodancer (Pokla ver.)",
       ["boss DEEP_BLUES"] = "Knight Fall",
       ["boss CORAL_RIFF"] = "Deep Fear Octobass",
-      ["boss FORTISSIMOLE"] = "Molevolence"
+      ["boss FORTISSIMOLE"] = "Molevolence",
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Aria Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Aria Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Aria Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Aria Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Aria Mix)"
+    },
+    VIRT = {
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Eli Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Eli Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Eli Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Eli Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Eli Mix)"
+    },
+    GIRLFRIEND_RECORDS = {
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Bard Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Bard Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Bard Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Bard Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Bard Mix)"
+    },
+    OC_REMIX = {
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Nocturna Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Nocturna Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Nocturna Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Nocturna Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Nocturna Mix)"
+    },
+    CHIPZEL = {
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Dorian Mix)",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Dorian Mix)",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Dorian Mix)",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed (Dorian Mix)",
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Dorian Mix)"
     },
     DANGANRONPA = {
       ["lobby"] = "DANGANRONPA",
@@ -161,7 +206,12 @@ return {
       ["zone MageZone_MAGE_ZONE 2"] = "Creepslime",
       ["zone MageZone_MAGE_ZONE 3"] = "Creepslime",
       ["boss MageZone_SYMPHONY_OF_SORCERY"] = "Creepslime",
-      ["boss MageZone_SYMHPONY_OF_SORCERY"] = "Creepslime" -- typo'd in source mod
+      ["boss MageZone_SYMHPONY_OF_SORCERY"] = "Creepslime", -- typo'd in source mod
+      ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "Godlight The Transcended ft. YurilXes",
+      ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Godlight The Transcended ft. YurilXes",
+      ["boss GodlightDDD_THE_HARMADILLO"] = "Godlight The Transcended",
+      ["boss GodlightDDD_THE_WEAPONMASTER"] = "Godlight The Transcended",
+      ["boss GodlightDDD_OPTICULO"] = "Godlight The Transcended ft. YurilXes"
     },
     DANNY_B = {
       _default = "Danny Baranowsky",

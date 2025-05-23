@@ -79,13 +79,15 @@ function mod.getArtistsFor(track)
       return artists -- just all of them
     elseif track.zoneKey == "ZONE_5" then
       return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true })
+    elseif track.zoneKey:sub(1, 12) == "GodlightDDD_" then
+      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true })
     else
       return { "DANNY_B" }
     end
   elseif track.type == "boss" then
     if ({ KING_CONGA = true, DEATH_METAL = true, DEEP_BLUES = true, CORAL_RIFF = true })[track.bossKey] then
       return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true })
-    elseif track.bossKey == "FORTISSIMOLE" then
+    elseif track.bossKey == "FORTISSIMOLE" or track.bossKey:sub(1, 12) == "GodlightDDD_" then
       return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true })
     elseif ({ DEAD_RINGER = true, NECRODANCER = true, NECRODANCER_2 = true, GOLDEN_LUTE = true, FRANKENSTEINWAY = true, CONDUCTOR = true })[track.bossKey] then
       return { "DANNY_B" }

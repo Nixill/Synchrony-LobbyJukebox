@@ -13,13 +13,13 @@ Only DannyB has a track here.
 ## Zone Music:
 - **Zones 1, 2, 3, and 4:** All soundtracks have tracks here!
 - **Zone 5:** Danganronpa and Groove Coaster do not have tracks here.
-- **Modded zones:** Can be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_MAGE_ZONE` in particular is known to follow this assumption.
+- **Modded zones:** Can usually be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_MAGE_ZONE` in particular is known to follow this assumption.
 
 ## Boss Music:
 - **King Conga, Death Metal, Deep Blues, Coral Riff:** All soundtracks except Hatsune Miku.
 - **Fortissimole:** All soundtracks except Miku, Groove Coaster, and Danganronpa
 - **Dead Ringer, NecroDancer, NecroDancer2, Golden Lute, Frankensteinway, Conductor:** DannyB only.
-- **Modded bosses:** Can be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_SYMHPONY_OF_SORCERY` and `Rogue_EXEO` in particular are known to follow this assumption.
+- **Modded bosses:** Can usually be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_SYMHPONY_OF_SORCERY` and `Rogue_EXEO` in particular are known to follow this assumption, while the bosses from `GodlightDDD` are known to break it (follows same logic as Fortissimole).
 
 
 

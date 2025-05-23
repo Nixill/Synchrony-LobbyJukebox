@@ -60,11 +60,11 @@ Play, CancelPlay = Tick.registerDelay(function(args)
   if args.next == true or (args.next == nil and Loop == false) then -- Play next from queue
     -- print("Playing next track")
     local nt = MusicControl.getNextTrack()
-    print("Now playing" .. Utilities.inspect(nt))
+    -- print("Now playing" .. Utilities.inspect(nt))
     Music.setMusic(nt, 0)
   elseif type(args.next) == "table" then -- Play a specific track
     -- print("Playing specific track")
-    print(args.next)
+    -- print(args.next)
     Music.setMusic(args.next, 0)
   elseif MusicFading then
     -- print("Restarting current track")
