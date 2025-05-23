@@ -25,6 +25,8 @@ function mod.hasMultipleVariants(track)
         ZONE_5 = true
       })[track.zoneKey] then
       return true
+    elseif track.zoneKey:sub(1, 12) == "GodlightDDD_" then
+      return true
     else
       return false
     end
@@ -38,6 +40,8 @@ function mod.hasMultipleVariants(track)
         MageZone_SYMPHONY_OF_SORCERY = true,
         MageZone_SYMHPONY_OF_SORCERY = true
       })[track.bossKey] then
+      return true
+    elseif track.bossKey:sub(1, 12) == "GodlightDDD_" then
       return true
     else
       return false
