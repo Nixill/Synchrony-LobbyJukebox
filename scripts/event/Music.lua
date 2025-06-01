@@ -13,10 +13,6 @@ Event.musicPlay.add("lobbyMusicAutoplay", { order = "playAudio", sequence = 1 },
     return
   end
 
-  if ev.track.boss == 9 then
-    -- print(ev)
-  end
-
   Beatmap.reset()
 
   Menu.updateAll()

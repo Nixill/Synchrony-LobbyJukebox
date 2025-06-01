@@ -1,4 +1,5 @@
 local Boss          = require "necro.game.level.Boss"
+local Entities      = require "system.game.Entities"
 local GameMod       = require "necro.game.data.resource.GameMod"
 local LevelSequence = require "necro.game.level.LevelSequence"
 local Music         = require "necro.audio.Music"
@@ -121,16 +122,22 @@ function mod.getSequence()
         modName = getModName(k)
       end
 
+      if LevelSequence.Zone.data[v].visible == false then
+        goto skipDLC
+      end
+
       local tbl = zonesByMod[modName] or {}
       table.insert(tbl, k)
       zonesByMod[modName] = tbl
 
       musicMods[modName] = true
+
+      ::skipDLC::
     end
 
     for v, k in ipairs(Boss.Type.names) do
       local modName = ""
-      if k == "NECRODANCER" then
+      if k == "NECRODANCER" or not Entities.isValidEntityType(Boss.Type.data[v].entity) then
         goto skipBoss
       end
 

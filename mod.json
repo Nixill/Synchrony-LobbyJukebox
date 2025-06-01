@@ -1,7 +1,7 @@
 {
 	"namespace": "LobbyJukebox",
 	"displayName": "LobbyJukebox",
-	"version": "1.0.2",
+	"version": "1.0.3.1",
 	"synchronyVersion": "4.0.0",
 	"description": "Spawns a jukebox in the lobby to play the game's soundtracks.\n(Jukebox art by WinnerBit!)",
 	"author": "Nixill",
@@ -15,6 +15,6 @@
 	"homepageURL": "https://mod.io/g/crypt/m/lobbyjukebox",
 	"modioID": "3915137",
 	"modioUserID": 12939888,
-	"pendingVersion": "1.0.2",
+	"pendingVersion": "1.0.3.1",
 	"visibility": 0
 }
