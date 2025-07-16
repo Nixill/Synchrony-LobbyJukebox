@@ -163,7 +163,7 @@ return {
       ["zone ZONE_4 1"] = "Maiami Sound Remix",
       ["zone ZONE_4 2"] = "Five to Seven",
       ["zone ZONE_4 3"] = "Fess Up!",
-      ["boss KING_CONGA"] = "カンナンシンク(Mortification of the Flesh)", --Localized in the Groove Coaster 2 mobile game (https://www.youtube.com/watch?v=ZYZ_0pWJAbM). Also sometimes known as KANNANSHINKU, but that just seems to be converting the kanji into the English alphabet rather than a proper localization.
+      ["boss KING_CONGA"] = "カンナンシンク(Mortification of the Flesh)", --Localized in the Groove Coaster 2 mobile game (https://www.youtube.com/watch?v=ZYZ_0pWJAbM). Also sometimes known as KANNANSHINKU, but that just seems to be converting the katakana into the English alphabet rather than a proper localization.
       ["boss DEATH_METAL"] = "Satisfaction",
       ["boss DEEP_BLUES"] = "FAKE (ALR Remix) (ダライアス外伝)",
       ["boss CORAL_RIFF"] = "Protocol Signal Generation"
