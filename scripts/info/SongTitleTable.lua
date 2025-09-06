@@ -54,7 +54,9 @@ return {
       ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation",
       ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury",
       ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed",
-      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch"
+      ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch",
+	  ["boss DSBossPack_DarkLich"] = "Nightmare Machine",
+	  ["boss DSBossPack_DetonationCrew"] = "wip loop - Track 01 (New song)"
     },
     A_RIVAL = {
       ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Melody Mix)",
@@ -211,7 +213,9 @@ return {
       ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Godlight The Transcended ft. YurilXes",
       ["boss GodlightDDD_THE_HARMADILLO"] = "Godlight The Transcended",
       ["boss GodlightDDD_THE_WEAPONMASTER"] = "Godlight The Transcended",
-      ["boss GodlightDDD_OPTICULO"] = "Godlight The Transcended ft. YurilXes"
+      ["boss GodlightDDD_OPTICULO"] = "Godlight The Transcended ft. YurilXes",
+	  ["boss DSBossPack_DarkLich"] = "Kevin Macleod",
+	  ["boss DSBossPack_DetonationCrew"] = "celestialghost8"
     },
     DANNY_B = {
       _default = "Danny Baranowsky",
