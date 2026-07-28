@@ -190,9 +190,6 @@ return {
     }
   },
   artists = {
-    _default = {
-      _default = "Unknown artist"
-    },
     _trackOverrides = {
       ["training"] = "Danny Baranowsky",
       ["tutorial"] = "Danny Baranowsky",

@@ -3,6 +3,8 @@
 -- local Music = require "necro.audio.Music"
 -- local LevelSequence = require "necro.game.level.LevelSequence"
 -- local Menu = require "necro.menu.Menu"
+-- local GameSong = require "necro.game.data.resource.GameSong"
+-- print(GameSong.Type)
 -- Menu.open("LobbyJukebox_nowPlaying")
 
 -- local MusicControl = require "LobbyJukebox.mod.MusicControl"

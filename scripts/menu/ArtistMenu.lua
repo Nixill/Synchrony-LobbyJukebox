@@ -22,7 +22,8 @@ local ArtistNames = {
   CHIPZEL = "Chipzel",
   DANGANRONPA = "Danganronpa",
   GROOVE_COASTER = "Groove Coaster",
-  HATSUNE_MIKU = "Hatsune Miku"
+  HATSUNE_MIKU = "Hatsune Miku",
+  SHOVEL_KNIGHT = "Shovel Knight"
 }
 
 --[[
@@ -79,6 +80,8 @@ end)
 
 local mod = {}
 
+-- TODO make this have a track input and only pick from artists available
+-- for that track if given.
 function mod.pickArtist()
   local artists = {}
   for k, v in pairs(ArtistTable) do
@@ -96,6 +99,7 @@ function mod.pickArtist()
   return Soundtrack.Artist.DANNY_B, "DANNY_B" -- fallback
 end
 
+-- TODO make this pull from the SongTitleTable
 function mod.getName(key)
   return ArtistNames[key]
 end

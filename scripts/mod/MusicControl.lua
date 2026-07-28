@@ -341,7 +341,7 @@ function mod.getSpecificTrack(nextTrack)
   end
 
   -- Zone 3: Pick hot or cold
-  if nextTrack.type == "zone" and nextTrack.zone == LevelSequence.Zone.ZONE_3 then
+  if nextTrack.type == "zone" and nextTrack.zone == LevelSequence.Zone.ZONE_3 and not nextTrack.variant then
     nextTrack.variant = RNG.choice({ "h", "c" }, RNG.Channel.SOUNDTRACK)
   end
 
