@@ -61,6 +61,7 @@ Event.menu.add("playlist", "LobbyJukebox_playlist", function(ev)
 
   for i, v in ipairs(sequence) do
     local title = SongInfo.getTitleInfo(v)
+    local hasMultipleVariants = Variants.hasMultipleVariants(v)
     table.insert(entries, {
       id = generateTreeKey(v, "label"),
       label = title,
@@ -120,9 +121,13 @@ Event.menu.add("playlist", "LobbyJukebox_playlist", function(ev)
         selectionTint = Theme.Color.HIGHLIGHT
       },
       action = function()
-        Variants.openArtistDropdown(Utilities.fastCopy(v))
+        if hasMultipleVariants then
+          Variants.openArtistDropdown(Utilities.fastCopy(v))
+        end
       end,
-      enableIf = Variants.hasMultipleVariants(v),
+      color = not hasMultipleVariants and Theme.getMenuItemColor(false, true) or nil,
+      selectedColor = not hasMultipleVariants and Theme.getMenuItemColor(true, true) or nil,
+      sound = not hasMultipleVariants and "error" or nil,
       x = 190,
       y = 50 * i - 40,
       boundingBox = {
