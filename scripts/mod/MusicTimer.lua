@@ -57,6 +57,10 @@ Play, CancelPlay = Tick.registerDelay(function(args)
 
   SettingsStorage.set("audio.music.volume", 0, Settings.Layer.SCRIPT_OVERRIDE)
 
+  if not MusicPlaying then
+    Music.resumeMusic()
+  end
+
   if args.next == true or (args.next == nil and Loop == false) then -- Play next from queue
     -- print("Playing next track")
     local nt = MusicControl.getNextTrack()
