@@ -189,6 +189,26 @@ return {
       ["zone ZONE_5 1"] = "sweety glitch",
       ["zone ZONE_5 2"] = "Thousand Little Voices",
       ["zone ZONE_5 3"] = "My One and Oni",
+    },
+    SHOVEL_KNIGHT = {
+      ["zone ZONE_1 1"] = "La Dance Macabre (Lich Yard)",
+      ["zone ZONE_1 2"] = "An Underlying Problem (The Lost City)",
+      ["zone ZONE_1 3"] = "In the Halls of the Usurper (Pridemoor Keep)",
+      ["zone ZONE_2 1"] = "The Buzz in the Grotto (Troupple Pond)",
+      ["zone ZONE_2 2"] = "The Betrayer (Enchantress Final Form)",
+      ["zone ZONE_2 3"] = "The Defender (Black Knight Battle)",
+      ["zone ZONE_3 1 c"] = "Main Theme",
+      ["zone ZONE_3 1 h"] = "Main Theme",
+      ["zone ZONE_3 2 c"] = "High Above the Land (The Flying Machine)",
+      ["zone ZONE_3 2 h"] = "High Above the Land (The Flying Machine)",
+      ["zone ZONE_3 3 c"] = "The Rival (Black Knight - First Battle)",
+      ["zone ZONE_3 3 h"] = "The Rival (Black Knight - First Battle)",
+      ["zone ZONE_4 1"] = "Flowers of Antimony (The Explodatorium)",
+      ["zone ZONE_4 2"] = "Strike the Earth! (Plains of Passage)",
+      ["zone ZONE_4 3"] = "A Thousand Leagues Below (Iron Whale)",
+      ["zone ZONE_5 1"] = "Of Devious Machinations (Clockwork Tower)",
+      ["zone ZONE_5 2"] = "The Vital Vitriol (Plague Knight Battle)",
+      ["zone ZONE_5 3"] = "Fighting with All of Our Might (Wandering Traveler Battle)",
     }
   },
   artists = {
@@ -331,6 +351,11 @@ return {
       ["zone ZONE_4 3"] = "Ocelot",
       ["zone ZONE_5 1"] = "gaburyu & nyankobrq",
       ["zone ZONE_5 2"] = "Vault Kid & FlangerMoose",
+    },
+    SHOVEL_KNIGHT = {
+      _default = "Jake Kaufman",
+      ["zone ZONE_4 1"] = "Manami Matsumae",
+      ["zone ZONE_4 3"] = "Manami Matsumae",
     }
   },
   vocals = {
