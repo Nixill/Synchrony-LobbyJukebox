@@ -16,8 +16,8 @@ Only DannyB has a track here.
 - **Modded zones:** Can usually be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_MAGE_ZONE` in particular is known to follow this assumption.
 
 ## Boss Music:
-- **King Conga, Death Metal, Deep Blues, Coral Riff:** All soundtracks except Hatsune Miku.
-- **Fortissimole:** All soundtracks except Miku, Groove Coaster, and Danganronpa
+- **King Conga, Death Metal, Deep Blues, Coral Riff:** All soundtracks except Hatsune Miku and Shovel Knight.
+- **Fortissimole:** All soundtracks except Miku, Groove Coaster, Danganronpa, and Shovel Knight
 - **Dead Ringer, NecroDancer, NecroDancer2, Golden Lute, Frankensteinway, Conductor:** DannyB only.
 - **Modded bosses:** Can usually be assumed to only have one soundtrack (represented by DannyB but not actually created by any of the base game's artists). `MageZone_SYMHPONY_OF_SORCERY` and `Rogue_EXEO` in particular are known to follow this assumption, while the bosses from `GodlightDDD` are known to break it (follows same logic as Fortissimole).
 
@@ -31,7 +31,7 @@ Any vocalist that's *globally* available (for example, not locked behind an unpu
 
 
 # Letter variants:
-- Zone `ZONE_3` has variants h or c, unless the artist `HATSUNE_MIKU` is in use.
+- Zone `ZONE_3` has variants h or c, unless the artist `HATSUNE_MIKU` or `SHOVEL_KNIGHT` is in use.
 - Boss `DEATH_METAL` with artist `FAMILYJULES7X` has variants (empty string) or a.
 - Boss `FORTISSIMOLE` with artist `GIRLFRIEND_RECORDS` has variants (empty string), a, or b.
 
