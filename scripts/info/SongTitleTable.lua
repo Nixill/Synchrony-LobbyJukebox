@@ -1,10 +1,13 @@
 -- Note: Notwithstanding the license of the rest of this repository, I
 -- (the author of this code) do not claim any copyright over this file.
 -- The information contained herein, such as song titles, may or may not
--- be subject to copyright by its original authors. This information is
--- used nominally and without endorsement by these authors. To any extent
--- I would have copyright control over THIS PARTICULAR FILE, I relinquish
--- it to the public domain.
+-- be subject to copyright or trademark rights by its original authors.
+-- This information is used nominally and without endorsement by these
+-- authors. To any extent I would have copyright control over THIS
+-- PARTICULAR FILE, I relinquish it to the public domain. Where this is
+-- not legally possible, I grant anyone the right to use anything that
+-- would be MY COPYRIGHT in THIS FILE for any purpose, without any
+-- conditions, unless such conditions are required by law.
 return {
   titles = {
     _default = { -- Default artist
