@@ -31,7 +31,7 @@ Any vocalist that's *globally* available (for example, not locked behind an unpu
 
 
 # Letter variants:
-- Zone `ZONE_3` has variants h or c, unless the artist `HATSUNE_MIKU` or `SHOVEL_KNIGHT` is in use.
+- Zone `ZONE_3` has variants h or c, unless the artist `GROOVE_COASTER`, `HATSUNE_MIKU`, or `SHOVEL_KNIGHT` is in use.
 - Boss `DEATH_METAL` with artist `FAMILYJULES7X` has variants (empty string) or a.
 - Boss `FORTISSIMOLE` with artist `GIRLFRIEND_RECORDS` has variants (empty string), a, or b.
 
