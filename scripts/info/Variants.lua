@@ -73,7 +73,7 @@ function mod.getArtistsFor(track)
   local artists = ArtistMenu.getAvailableArtists()
 
   if track.type == "lobby" then
-    return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true })
+    return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
   elseif track.type == "training" then
     return Utilities.map(artists, artistAmongFunc { DANNY_B = true, OC_REMIX = true })
   elseif track.type == "tutorial" then
@@ -84,15 +84,15 @@ function mod.getArtistsFor(track)
     elseif track.zoneKey == "ZONE_5" then
       return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true })
     elseif track.zoneKey:sub(1, 12) == "GodlightDDD_" then
-      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true })
+      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     else
       return { "DANNY_B" }
     end
   elseif track.type == "boss" then
     if ({ KING_CONGA = true, DEATH_METAL = true, DEEP_BLUES = true, CORAL_RIFF = true })[track.bossKey] then
-      return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true })
+      return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     elseif track.bossKey == "FORTISSIMOLE" or track.bossKey:sub(1, 12) == "GodlightDDD_" then
-      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true })
+      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     elseif ({ DEAD_RINGER = true, NECRODANCER = true, NECRODANCER_2 = true, GOLDEN_LUTE = true, FRANKENSTEINWAY = true, CONDUCTOR = true })[track.bossKey] then
       return { "DANNY_B" }
     else
@@ -118,7 +118,7 @@ function mod.getVocalistsFor(track)
 end
 
 function mod.getVariantsFor(track)
-  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true })[track.artistKey] then
+  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })[track.artistKey] then
     return { { id = "h", name = "Hot" }, { id = "c", name = "Cold" } }
   elseif track.bossKey == "DEATH_METAL" and track.artistKey == "FAMILYJULES7X" then
     return { { id = "", name = "Default" }, { id = "a", name = "Polka" } }
