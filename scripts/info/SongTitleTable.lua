@@ -55,8 +55,8 @@ return {
       ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury",
       ["boss GodlightDDD_THE_WEAPONMASTER"] = "Wighteousness Betrayed",
       ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch",
-	  ["boss DSBossPack_DarkLich"] = "Nightmare Machine",
-	  ["boss DSBossPack_DetonationCrew"] = "wip loop - Track 01 (New song)"
+      ["boss DSBossPack_DarkLich"] = "Nightmare Machine",
+      ["boss DSBossPack_DetonationCrew"] = "wip loop - Track 01 (New song)"
     },
     A_RIVAL = {
       ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Melody Mix)",
@@ -165,7 +165,7 @@ return {
       ["zone ZONE_4 1"] = "Maiami Sound Remix",
       ["zone ZONE_4 2"] = "Five to Seven",
       ["zone ZONE_4 3"] = "Fess Up!",
-      ["boss KING_CONGA"] = "カンナンシンク(Mortification of the Flesh)", --Localized in the Groove Coaster 2 mobile game (https://www.youtube.com/watch?v=ZYZ_0pWJAbM). Also sometimes known as KANNANSHINKU, but that just seems to be converting the katakana into the English alphabet rather than a proper localization.
+      ["boss KING_CONGA"] = "カンナンシンク(Mortification of the Flesh)", --Localized in the Groove Coaster 2 mobile game. Also sometimes known as KANNANSHINKU, but that just seems to be converting the katakana into the English alphabet rather than a proper localization.
       ["boss DEATH_METAL"] = "Satisfaction",
       ["boss DEEP_BLUES"] = "FAKE (ALR Remix) (ダライアス外伝)",
       ["boss CORAL_RIFF"] = "Protocol Signal Generation"
@@ -231,8 +231,8 @@ return {
       ["boss GodlightDDD_THE_HARMADILLO"] = "Godlight The Transcended",
       ["boss GodlightDDD_THE_WEAPONMASTER"] = "Godlight The Transcended",
       ["boss GodlightDDD_OPTICULO"] = "Godlight The Transcended ft. YurilXes",
-	  ["boss DSBossPack_DarkLich"] = "Kevin Macleod",
-	  ["boss DSBossPack_DetonationCrew"] = "celestialghost8"
+      ["boss DSBossPack_DarkLich"] = "Kevin Macleod",
+      ["boss DSBossPack_DetonationCrew"] = "celestialghost8"
     },
     DANNY_B = {
       _default = "Danny Baranowsky",
