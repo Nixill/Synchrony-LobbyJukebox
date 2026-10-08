@@ -118,7 +118,7 @@ function mod.getVocalistsFor(track)
 end
 
 function mod.getVariantsFor(track)
-  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })[track.artistKey] then
+  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true, SHOVEL_KNIGHT = true, GROOVE_COASTER =  true })[track.artistKey] then
     return { { id = "h", name = "Hot" }, { id = "c", name = "Cold" } }
   elseif track.bossKey == "DEATH_METAL" and track.artistKey == "FAMILYJULES7X" then
     return { { id = "", name = "Default" }, { id = "a", name = "Polka" } }
