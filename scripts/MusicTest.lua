@@ -5,9 +5,9 @@
 -- local Menu = require "necro.menu.Menu"
 -- local GameSong = require "necro.game.data.resource.GameSong"
 -- print(GameSong.Type)
--- Menu.open("LobbyJukebox_nowPlaying")
+-- Menu.open("LobbyJukebox2_nowPlaying")
 
--- local MusicControl = require "LobbyJukebox.mod.MusicControl"
+-- local MusicControl = require "LobbyJukebox2.mod.MusicControl"
 
 -- for i = 1, Music.getLayerCount() do
 --   Music.setLayerVolume(i, 1)

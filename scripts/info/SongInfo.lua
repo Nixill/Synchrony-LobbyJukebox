@@ -5,7 +5,7 @@ local Music           = require "necro.audio.Music"
 local Soundtrack      = require "necro.game.data.Soundtrack"
 local StringUtilities = require "system.utils.StringUtilities"
 
-local Info = require "LobbyJukebox.info.SongTitleTable"
+local Info = require "LobbyJukebox2.info.SongTitleTable"
 
 local mod = {}
 

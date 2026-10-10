@@ -15,12 +15,12 @@ interactedTurnID = script.persist(function() return interactedTurnID end)
 
 Components.register {
   -- Interaction with an entity with this component will open the
-  -- "LobbyJukebox_nowPlaying" menu.
-  LobbyJukebox_interactableOpenJukebox = {}
+  -- "LobbyJukebox2_nowPlaying" menu.
+  LobbyJukebox2_interactableOpenJukebox = {}
 }
 
 CustomEntities.register {
-  name = "LobbyJukebox_Jukebox",
+  name = "LobbyJukebox2_Jukebox",
   collision = {
     mask = Collision.Type.OBJECT
   },
@@ -29,7 +29,7 @@ CustomEntities.register {
   },
   gameObject = {},
   interactable = {},
-  LobbyJukebox_interactableOpenJukebox = {},
+  LobbyJukebox2_interactableOpenJukebox = {},
   minimapStaticPixel = {
     depth = MinimapTheme.Depth.SHRINE,
     color = MinimapTheme.Color.SHRINE,
@@ -57,7 +57,7 @@ CustomEntities.register {
   shadowPosition = {},
   silhouette = {},
   sprite = {
-    texture = "/mods/LobbyJukebox/gfx/Jukebox.png",
+    texture = "/mods/LobbyJukebox2/gfx/Jukebox.png",
     width = 26,
     height = 36
   },
@@ -68,21 +68,21 @@ CustomEntities.register {
 Event.levelLoad.add("spawnJukebox", { order = "lobbyLevel", sequence = 1 }, function(ev)
   if CurrentLevel.isLobby() then
     interactedTurnID = -1
-    Object.spawn("LobbyJukebox_Jukebox", -5, -1)
+    Object.spawn("LobbyJukebox2_Jukebox", -5, -1)
   end
 end)
 
 Event.objectInteract.add("openJukeboxMenu", {
   order = "configInteractable",
   sequence = 1,
-  filter = "LobbyJukebox_interactableOpenJukebox"
+  filter = "LobbyJukebox2_interactableOpenJukebox"
 }, function(ev)
   if ev.interactor and ev.interactor.controllable and LocalCoop.isLocal(ev.interactor.controllable.playerID) then
     -- Avoid menu opening multiple times with multiple local players
     local turnID = Turn.getCurrentTurnID()
     if turnID > interactedTurnID then
       interactedTurnID = turnID
-      Menu.open("LobbyJukebox_nowPlaying")
+      Menu.open("LobbyJukebox2_nowPlaying")
       Menu.selectByID("nowPlaying.playPause")
     end
   end

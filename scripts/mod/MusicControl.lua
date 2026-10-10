@@ -8,8 +8,8 @@ local Settings      = require "necro.config.Settings"
 local Soundtrack    = require "necro.game.data.Soundtrack"
 local Utilities     = require "system.utils.Utilities"
 
-local ArtistMenu     = require "LobbyJukebox.menu.ArtistMenu"
-local ShopkeeperMenu = require "LobbyJukebox.menu.ShopkeeperMenu"
+local ArtistMenu     = require "LobbyJukebox2.menu.ArtistMenu"
+local ShopkeeperMenu = require "LobbyJukebox2.menu.ShopkeeperMenu"
 
 Queue = {}
 -- By making this a local variable, it'll persist *until* a mod reload.
@@ -212,7 +212,7 @@ local function getCurrentPosition()
   local seq = mod.getSequence()
   local thisTrack = Music.getParameters()
 
-  if thisTrack.LobbyJukebox_ignore then
+  if thisTrack.LobbyJukebox2_ignore then
     thisTrack = LastPlay
   end
 

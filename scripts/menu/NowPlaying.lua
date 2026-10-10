@@ -7,12 +7,12 @@ local SliderMenu      = require "necro.menu.generic.SliderMenu"
 local StringUtilities = require "system.utils.StringUtilities"
 local Theme           = require "necro.config.Theme"
 
-local SongInfo     = require "LobbyJukebox.info.SongInfo"
-local MusicControl = require "LobbyJukebox.mod.MusicControl"
-local MusicTimer   = require "LobbyJukebox.mod.MusicTimer"
+local SongInfo     = require "LobbyJukebox2.info.SongInfo"
+local MusicControl = require "LobbyJukebox2.mod.MusicControl"
+local MusicTimer   = require "LobbyJukebox2.mod.MusicTimer"
 
 local function getIcon(which)
-  return "/mods/LobbyJukebox/gfx/controls/" .. which .. ".png"
+  return "/mods/LobbyJukebox2/gfx/controls/" .. which .. ".png"
 end
 
 local function getTime(v, m)
@@ -42,7 +42,7 @@ end
 local selectPrev = function() Menu.changeSelection(-1, true) end
 local selectNext = function() Menu.changeSelection(1, true) end
 
-Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
+Event.menu.add("nowPlaying", "LobbyJukebox2_nowPlaying", function(ev)
   Menu.suppressKeyControlForTick()
 
   local info = SongInfo.getSongInfo()
@@ -280,7 +280,7 @@ Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
         48,
         48
       },
-      action = function() Menu.open("LobbyJukebox_playlist") end,
+      action = function() Menu.open("LobbyJukebox2_playlist") end,
       leftAction = selectPrev,
       rightAction = selectNext,
       upAction = function() end,
@@ -304,9 +304,9 @@ Event.menu.add("nowPlaying", "LobbyJukebox_nowPlaying", function(ev)
       action = function()
         Menu.open("settings", {
           layer = Settings.Layer.USER,
-          prefix = "mod.LobbyJukebox",
+          prefix = "mod.LobbyJukebox2",
           showSliders = true,
-          LobbyJukebox_noFilter = true
+          LobbyJukebox2_noFilter = true
         })
       end,
       leftAction = selectPrev,

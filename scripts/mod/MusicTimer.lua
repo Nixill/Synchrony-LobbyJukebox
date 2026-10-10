@@ -10,7 +10,7 @@ local Soundtrack      = require "necro.game.data.Soundtrack"
 local Tick            = require "necro.cycles.Tick"
 local Utilities       = require "system.utils.Utilities"
 
-local MusicControl = require "LobbyJukebox.mod.MusicControl"
+local MusicControl = require "LobbyJukebox2.mod.MusicControl"
 
 MusicPlaying = false
 MusicFading = false

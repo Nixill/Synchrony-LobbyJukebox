@@ -7,8 +7,8 @@ NoFilter = false
 Event.menu.override("settings", { sequence = 1 }, function(func, ev)
   func(ev)
 
-  if StringUtilities.startsWith(ev.arg.prefix, "mod.LobbyJukebox") then
-    NoFilter = ev.arg.LobbyJukebox_noFilter
+  if StringUtilities.startsWith(ev.arg.prefix, "mod.LobbyJukebox2") then
+    NoFilter = ev.arg.LobbyJukebox2_noFilter
 
     if NoFilter then
       ev.menu.audioFilter = function(t)

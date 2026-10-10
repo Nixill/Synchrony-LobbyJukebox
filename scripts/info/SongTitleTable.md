@@ -42,5 +42,5 @@ If you are pull requesting song or artist titles, please abide by the following 
 2. Only submit one mod's songs per pull request.
 3. Do not alter any existing data, unless it is a correction to data you've previously submitted or data about your own mod's music.
 4. Do not delete any existing data, unless it is about your own mod's music.
-5. Do not submit data for the following mods whose creators have requested to be excluded from LobbyJukebox:
+5. Do not submit data for the following mods whose creators have requested to be excluded from LobbyJukebox or LobbyJukebox2:
    1. *(Nobody has, but I'm putting this here anyway in case someone does.)*

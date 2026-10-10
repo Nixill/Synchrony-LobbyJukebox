@@ -6,7 +6,7 @@ local Soundtrack = require "necro.game.data.Soundtrack"
 local TextFormat = require "necro.config.i18n.TextFormat"
 local Utilities  = require "system.utils.Utilities"
 
-local LJSettings = require "LobbyJukebox.menu.Settings"
+local LJSettings = require "LobbyJukebox2.menu.Settings"
 
 local artistDefaults = {
   _TrackOverrides = {}
@@ -69,7 +69,7 @@ ArtistMenu = Settings.user.action {
   desc = "Change which soundtracks the jukebox can play from.",
   id = "artistMenu",
   order = 3,
-  action = function() Menu.open("LobbyJukebox_artistMenu") end
+  action = function() Menu.open("LobbyJukebox2_artistMenu") end
 }
 
 Event.contentLoad.add("mergeArtists", { order = "snapshots", sequence = 1 }, function(ev)
@@ -116,7 +116,7 @@ function mod.getAvailableArtists()
   return artists
 end
 
-Event.menu.add("artistMenu", "LobbyJukebox_artistMenu", function(ev)
+Event.menu.add("artistMenu", "LobbyJukebox2_artistMenu", function(ev)
   local entries = {
   }
 

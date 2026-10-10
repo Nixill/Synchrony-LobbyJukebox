@@ -6,7 +6,7 @@ local Soundtrack = require "necro.game.data.Soundtrack"
 local TextFormat = require "necro.config.i18n.TextFormat"
 local Utilities  = require "system.utils.Utilities"
 
-local LJSettings = require "LobbyJukebox.menu.Settings"
+local LJSettings = require "LobbyJukebox2.menu.Settings"
 
 local shopkeeperDefaults = {
   _TrackOverrides = {}
@@ -48,7 +48,7 @@ ShopkeeperMenu = Settings.user.action {
   desc = "Change which vocalists may sing along to the jukebox.",
   id = "shopkeeperMenu",
   order = 3,
-  action = function() Menu.open("LobbyJukebox_shopkeeperMenu") end
+  action = function() Menu.open("LobbyJukebox2_shopkeeperMenu") end
 }
 
 Event.contentLoad.add("mergeShopkeepers", { order = "snapshots", sequence = 1 }, function(ev)
@@ -88,7 +88,7 @@ function mod.getAvailableVocalists()
   return vocalists
 end
 
-Event.menu.add("shopkeeperMenu", "LobbyJukebox_shopkeeperMenu", function(ev)
+Event.menu.add("shopkeeperMenu", "LobbyJukebox2_shopkeeperMenu", function(ev)
   local entries = {}
 
   for i, v in ipairs(mod.getAvailableVocalists()) do

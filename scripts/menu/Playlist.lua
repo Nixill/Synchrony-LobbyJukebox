@@ -8,15 +8,15 @@ local StringUtilities = require "system.utils.StringUtilities"
 local Theme           = require "necro.config.Theme"
 local Utilities       = require "system.utils.Utilities"
 
-local SongInfo     = require "LobbyJukebox.info.SongInfo"
-local MusicControl = require "LobbyJukebox.mod.MusicControl"
-local MusicTimer   = require "LobbyJukebox.mod.MusicTimer"
-local Variants     = require "LobbyJukebox.info.Variants"
+local SongInfo     = require "LobbyJukebox2.info.SongInfo"
+local MusicControl = require "LobbyJukebox2.mod.MusicControl"
+local MusicTimer   = require "LobbyJukebox2.mod.MusicTimer"
+local Variants     = require "LobbyJukebox2.info.Variants"
 
 local mod = {}
 
 local function getIcon(which)
-  return "/mods/LobbyJukebox/gfx/controls/" .. which .. ".png"
+  return "/mods/LobbyJukebox2/gfx/controls/" .. which .. ".png"
 end
 
 local function generateTreeKey(params, suffix)
@@ -54,7 +54,7 @@ local function songBlockAction(params)
   end
 end
 
-Event.menu.add("playlist", "LobbyJukebox_playlist", function(ev)
+Event.menu.add("playlist", "LobbyJukebox2_playlist", function(ev)
   local entries = {}
 
   local sequence = MusicControl.getSequence()

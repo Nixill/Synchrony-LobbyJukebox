@@ -4,10 +4,10 @@ local Soundtrack   = require "necro.game.data.Soundtrack"
 local TextFormat   = require "necro.config.i18n.TextFormat"
 local Utilities    = require "system.utils.Utilities"
 
-local MusicControl   = require "LobbyJukebox.mod.MusicControl"
-local MusicTimer     = require "LobbyJukebox.mod.MusicTimer"
-local ArtistMenu     = require "LobbyJukebox.menu.ArtistMenu"
-local ShopkeeperMenu = require "LobbyJukebox.menu.ShopkeeperMenu"
+local MusicControl   = require "LobbyJukebox2.mod.MusicControl"
+local MusicTimer     = require "LobbyJukebox2.mod.MusicTimer"
+local ArtistMenu     = require "LobbyJukebox2.menu.ArtistMenu"
+local ShopkeeperMenu = require "LobbyJukebox2.menu.ShopkeeperMenu"
 
 local mod = {}
 
@@ -84,7 +84,8 @@ function mod.getArtistsFor(track)
     elseif track.zoneKey == "ZONE_5" then
       return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true })
     elseif track.zoneKey:sub(1, 12) == "GodlightDDD_" then
-      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
+      return Utilities.map(artists,
+        artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     else
       return { "DANNY_B" }
     end
@@ -92,7 +93,8 @@ function mod.getArtistsFor(track)
     if ({ KING_CONGA = true, DEATH_METAL = true, DEEP_BLUES = true, CORAL_RIFF = true })[track.bossKey] then
       return Utilities.map(artists, artistNotAmongFunc { HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     elseif track.bossKey == "FORTISSIMOLE" or track.bossKey:sub(1, 12) == "GodlightDDD_" then
-      return Utilities.map(artists, artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
+      return Utilities.map(artists,
+        artistNotAmongFunc { GROOVE_COASTER = true, DANGANRONPA = true, HATSUNE_MIKU = true, SHOVEL_KNIGHT = true })
     elseif ({ DEAD_RINGER = true, NECRODANCER = true, NECRODANCER_2 = true, GOLDEN_LUTE = true, FRANKENSTEINWAY = true, CONDUCTOR = true })[track.bossKey] then
       return { "DANNY_B" }
     else
@@ -118,7 +120,7 @@ function mod.getVocalistsFor(track)
 end
 
 function mod.getVariantsFor(track)
-  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true, SHOVEL_KNIGHT = true, GROOVE_COASTER =  true })[track.artistKey] then
+  if track.zoneKey == "ZONE_3" and not ({ HATSUNE_MIKU = true, SHOVEL_KNIGHT = true, GROOVE_COASTER = true })[track.artistKey] then
     return { { id = "h", name = "Hot" }, { id = "c", name = "Cold" } }
   elseif track.bossKey == "DEATH_METAL" and track.artistKey == "FAMILYJULES7X" then
     return { { id = "", name = "Default" }, { id = "a", name = "Polka" } }
@@ -270,7 +272,7 @@ end
 function mod.finallyPlay(track)
   MusicTimer.play(MusicControl.getSpecificTrack(track))
   Menu.updateAll()
-  Menu.closeNamed("LobbyJukebox_playlist")
+  Menu.closeNamed("LobbyJukebox2_playlist")
 end
 
 return mod
