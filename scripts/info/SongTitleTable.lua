@@ -116,6 +116,9 @@ return {
       ["boss GodlightDDD_OPTICULO"] = "Lightmatter Lungematch (Bard Mix)"
     },
     OC_REMIX = {
+      ["lobby"] = "Funky Morty",
+      ["zone ZONE_1 1"] = "9-bit Cryptography",
+      ["zone ZONE_1 3"] = "Sepulchre Soirée",
       ["boss GodlightDDD_THE_GREAT_SLIME_FAIRY"] = "The Sludge That Smashes (Nocturna Mix)",
       ["boss GodlightDDD_TOAD_FT_TOADETTE"] = "Disco Detonation (Nocturna Mix)",
       ["boss GodlightDDD_THE_HARMADILLO"] = "Impalightning Fury (Nocturna Mix)",
